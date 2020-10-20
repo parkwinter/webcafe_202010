@@ -59,18 +59,20 @@
 	<hr style="border-top:1px solid #BDBDBD; border-bottom:1px"/>
 	
 	
-	<div id="received_span" style="display:none">
-		<u:receivedMail />
+	<div id="received_span" style="display:active">
+		<%-- <u:receivedMail /> --%>
+		<jsp:include page="receivedMail.jsp" />
 	</div>
 	
 	<div id="send_span" style="display:none">
-		<u:sendMail /> 
+		<%-- <u:sendMail /> --%> 
+		<jsp:include page="sendMail.jsp" />
 	</div>
 </section>
 
 
 <!-- 쪽지함 form -->
-<div >
+<!-- <div >
 	<table style="font-size:13px">
 		<tr style="background-color:#EAEAEA; border-bottom:1px solid #8C8C8C"> 
 			<td width=25 style="padding-top:10px;padding-bottom:10px;padding-left:5px;border-right:1px solid #8C8C8C"> <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> </td>
@@ -79,7 +81,7 @@
 			<td width=80 style="border-right:1px solid #8C8C8C"> &nbsp; 받은 날짜 </td>
 		</tr>
 		
-		<!-- db 연동해서 추가될 부분 -->
+		db 연동해서 추가될 부분
 		<tr style=" border-bottom:1px solid #8C8C8C">
 			<td width=25 style="padding-top:10px;padding-bottom:10px;padding-left:5px;border-right:1px solid #8C8C8C"> <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> </td>
 			<td width=80 style="border-right:1px solid #8C8C8C"> &nbsp; 유둉이</td>
@@ -87,7 +89,7 @@
 			<td width=80 style="border-right:1px solid #8C8C8C"> &nbsp; 2020-10-16 </td>
 		</tr>
 	</table>
-</div>
+</div> -->
 </div>
 </body>
 </html>

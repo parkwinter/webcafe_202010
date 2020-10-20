@@ -89,6 +89,9 @@ function myMsgsPopup(){
 	<td style="padding-bottom:7px"> 
 
 	<!-- 프로필 바꾸는 곳 -->
+	<c:if test="${profile == null }">	
+		<img id="profile" name="profile" width=64 height=64 alt="" src="${path }/resources/images/basic_profile.png">
+	</c:if>
 	<c:if test="${profile == 'profile1' }">	
 		<img id="profile" name="profile" width=64 height=64 alt="" src="${path }/resources/images/profile1.png">
 	</c:if>
