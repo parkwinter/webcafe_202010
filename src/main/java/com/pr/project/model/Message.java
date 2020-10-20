@@ -19,5 +19,10 @@ public class Message {
 	private String m_content;
 	private Date m_send_date;
 	
+	// 페이징용
+	private int startRow;
+	private int endRow;
+	
+	
 }
 

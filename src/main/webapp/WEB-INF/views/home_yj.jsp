@@ -60,7 +60,8 @@
 				<a href="" class="btn btn-xs btn-default">로그인</a>
 			</p>
 		</div>
-		<img src="${path }/resources/images/yanado.jpg" alt="" />
+		<!-- 메인사진 -->
+		<img src="${path }/resources/images/ggul2.png" alt="" />
 	</div>
 </section>
 <div class="container" align="center" style="padding-top:10px;padding-left:40px;padding-right:40px;">

@@ -21,17 +21,25 @@ public class MessageServiceImpl implements MessageService{
 	}
 
 
-	
 	public List<Message> sendlist(Message message) {
 		
 		return msgd.sendlist(message);
 	}
 
 
-
-	
 	public List<Message> reclist(Message message) {
 		
 		return msgd.reclist(message);
+	}
+
+	public int getTotal(Message message) {
+		
+		return msgd.getTotal(message);
+	}
+
+
+	public int getTotal_r(Message message) {
+		
+		return msgd.getTotal_r(message);
 	}
 }

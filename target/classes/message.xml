@@ -28,13 +28,28 @@
 			where user_id = #{m_receiver_id}),'n', '제목없음', #{m_content}, sysdate)
 	</insert>
 	
-	<select id="sendlist" resultMap="msgResult">
-		select * from message where m_sender_nick = '유댕ㅎㅎ'
+	<select id="sendlist" parameterType="message" resultMap="msgResult">
+		select * from (select a.*, rownum rn from 
+							(select * from message  order by m_num desc) a)
+			where m_sender_nick = '유댕ㅎㅎ' and rn between #{startRow} and #{endRow}
 	</select>
 	
 	<select id="reclist" resultMap="msgResult">
-		select * from message where m_receiver_nick = '쁘띠길동'
+		select * from (select a.*, rownum rn from 
+							(select * from message  order by m_num desc) a)
+			where m_receiver_nick = '쁘띠길동' and rn between #{startRow} and #{endRow}		
 	</select>
+	
+	<select id="getTotal" parameterType="message"  resultType="integer">
+	select count(*) from message where m_sender_nick = '유댕ㅎㅎ' 
+		
+	</select>
+	
+	<select id="getTotal_r" parameterType="message"  resultType="integer">
+	select count(*) from message where m_receiver_nick = '쁘띠길동' 
+		
+	</select>
+	
 </mapper>
 
 

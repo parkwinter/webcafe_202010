@@ -12,4 +12,8 @@ public interface MessageService {
 
 	List<Message> reclist(Message message);
 
+	int getTotal(Message message);
+
+	int getTotal_r(Message message);
+
 }

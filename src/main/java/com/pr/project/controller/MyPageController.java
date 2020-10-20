@@ -9,14 +9,17 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import com.pr.project.model.Message;
 import com.pr.project.model.User;
 import com.pr.project.service.MessageService;
 import com.pr.project.service.MyPageService;
+import com.pr.project.service.PagingBean_msg;
 import com.pr.project.service.UserService;
 
 @Controller
@@ -130,19 +133,75 @@ public class MyPageController {
 		return msg;
 	}
 	
-	@RequestMapping("myPageTab/myMsgs")
-	public String myMsgs(Message message, Model model) {
+	
+	
+
+	
+	@RequestMapping("myPageTab/my_receivedMail")
+	public String my_receivedMail(String pageNum, Message message, Model model) {
+		
+		int rowPerPage = 5;
+		// 페이지가 지정되지 않으면 1페이지를 보여줘라
+		if (pageNum==null || pageNum.equals(""))
+			pageNum="1";
+		int currentPage = Integer.parseInt(pageNum);
+		int total = msgs.getTotal_r(message);  // 받은쪽지 토탈
+		int startRow = (currentPage - 1)*rowPerPage + 1;
+		int endRow = startRow + rowPerPage - 1;
+		message.setStartRow(startRow);
+		message.setEndRow(endRow);
+		
+		//System.out.println("starRow= "+startRow);
+		//System.out.println("endRow="+endRow);
+		
+		PagingBean_msg pbm = new PagingBean_msg(currentPage,rowPerPage,total); //보낸쪽지 
+		
+		//List<Message> sendlist = msgs.sendlist(message); //보낸쪽지 리스트
+		
+		 List<Message> reclist = msgs.reclist(message); //받은쪽지 리스트
+		
+		 
+		
+		//model.addAttribute("sendlist", sendlist);
+		 model.addAttribute("reclist", reclist);
+		
+		model.addAttribute("pbm", pbm); //보낸쪽지
+		
+		return "myPageTab/my_receivedMail";
+	}
+	
+	@RequestMapping("myPageTab/sendMail")
+	public String sendMail(String pageNum, Message message, Model model) {
+		
+		int rowPerPage = 5;
+		// 페이지가 지정되지 않으면 1페이지를 보여줘라
+		if (pageNum==null || pageNum.equals(""))
+			pageNum="1";
+		int currentPage = Integer.parseInt(pageNum);
+		int total = msgs.getTotal(message);  // 보낸쪽지 토탈
+		int startRow = (currentPage - 1)*rowPerPage + 1;
+		int endRow = startRow + rowPerPage - 1;
+		message.setStartRow(startRow);
+		message.setEndRow(endRow);
+		
+		//System.out.println("starRow= "+startRow);
+		//System.out.println("endRow="+endRow);
+		
+		PagingBean_msg pbm = new PagingBean_msg(currentPage,rowPerPage,total); //보낸쪽지 
 		
 		List<Message> sendlist = msgs.sendlist(message); //보낸쪽지 리스트
 		
-		List<Message> reclist = msgs.reclist(message); //받은쪽지 리스트
+		// List<Message> reclist = msgs.reclist(message); //받은쪽지 리스트
 		
 		
 		model.addAttribute("sendlist", sendlist);
-		model.addAttribute("reclist", reclist);
+		// model.addAttribute("reclist", reclist);
 		
-		return "myPageTab/myMsgs";
+		model.addAttribute("pbm", pbm); //보낸쪽지
+		
+		return "myPageTab/sendMail";
 	}
 	
+
 	
 }

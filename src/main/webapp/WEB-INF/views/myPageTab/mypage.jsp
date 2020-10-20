@@ -18,7 +18,7 @@ function setting(w, h){
 	var popupY= Math.ceil(window.screen.height - popupHeight) /2 ;
 	// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
 	
-	var option = "width="+ w +",height="+ h + ",left=" + popupX + ",top=" + popupY + ",screenX=" + popupX + ",screenY=" + popupY + "resizable=no;";
+	var option = "width="+ w +",height="+ h + ",left=" + popupX + ",top=" + popupY + ",screenX=" + popupX + ",screenY=" + popupY + "resizable=no;scrollbars=no";
 	
 	return option;
 	
@@ -71,12 +71,14 @@ function userInfoPopup(){
 
 /* 내 쪽지함 버튼 이벤트 */
 function myMsgsPopup(){
-	var url = "myPageTab/myMsgs.html";
+	var url = "myPageTab/my_receivedMail.html";
 	
 	var newOption = setting(500,471);
 	
 	window.open(url,"",newOption);
 }
+
+
 
 </script>
 

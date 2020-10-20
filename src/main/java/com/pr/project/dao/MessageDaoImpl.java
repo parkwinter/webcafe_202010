@@ -19,8 +19,6 @@ public class MessageDaoImpl implements MessageDao{
 		return sst.insert("messagens.insert",message);
 	}
 
-
-	
 	public List<Message> sendlist(Message message) {
 		
 		return sst.selectList("messagens.sendlist",message);
@@ -30,5 +28,17 @@ public class MessageDaoImpl implements MessageDao{
 	public List<Message> reclist(Message message) {
 		
 		return sst.selectList("messagens.reclist",message);
+	}
+
+
+	public int getTotal(Message message) {
+		
+		return sst.selectOne("messagens.getTotal",message);
+	}
+
+
+	public int getTotal_r(Message message) {
+		
+		return sst.selectOne("messagens.getTotal_r",message);
 	}
 }
