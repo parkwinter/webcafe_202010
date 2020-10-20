@@ -1,6 +1,7 @@
 package com.pr.project.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -130,14 +131,14 @@ public class MyPageController {
 	}
 	
 	@RequestMapping("myPageTab/myMsgs")
-	public String myMsgs() {
+	public String myMsgs(Message message, Model model) {
+		
+		List<Message> list = msgs.list(message);
+		
+		model.addAttribute("list", list);
 		
 		return "myPageTab/myMsgs";
 	}
 	
-	/*
-	 * @RequestMapping("myPageTab/msgSuccess") public String msgSuccess() {
-	 * 
-	 * return "myPageTab/msgSuccess"; }
-	 */
+	
 }

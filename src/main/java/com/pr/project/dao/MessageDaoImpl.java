@@ -1,5 +1,7 @@
 package com.pr.project.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -15,5 +17,12 @@ public class MessageDaoImpl implements MessageDao{
 	public int insert(Message message) {
 	
 		return sst.insert("messagens.insert",message);
+	}
+
+
+	
+	public List<Message> list(Message message) {
+		
+		return sst.selectList("messagens.list",message);
 	}
 }
