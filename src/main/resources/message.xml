@@ -25,11 +25,15 @@
 		
 		insert into message values(AA.nextval, 'pyj078', '유댕ㅎㅎ', '0:0:0:0','n', #{m_receiver_id}, 
 		(select user_nickname from user_info
-			where user_id='test'),'n', '제목없음', #{m_content}, sysdate)
+			where user_id = #{m_receiver_id}),'n', '제목없음', #{m_content}, sysdate)
 	</insert>
 	
-	<select id="list" resultMap="msgResult">
-		select * from message
+	<select id="sendlist" resultMap="msgResult">
+		select * from message where m_sender_nick = '유댕ㅎㅎ'
+	</select>
+	
+	<select id="reclist" resultMap="msgResult">
+		select * from message where m_receiver_nick = '쁘띠길동'
 	</select>
 </mapper>
 

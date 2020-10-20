@@ -22,8 +22,16 @@ public class MessageServiceImpl implements MessageService{
 
 
 	
-	public List<Message> list(Message message) {
+	public List<Message> sendlist(Message message) {
 		
-		return msgd.list(message);
+		return msgd.sendlist(message);
+	}
+
+
+
+	
+	public List<Message> reclist(Message message) {
+		
+		return msgd.reclist(message);
 	}
 }

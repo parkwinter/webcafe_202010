@@ -133,9 +133,13 @@ public class MyPageController {
 	@RequestMapping("myPageTab/myMsgs")
 	public String myMsgs(Message message, Model model) {
 		
-		List<Message> list = msgs.list(message);
+		List<Message> sendlist = msgs.sendlist(message); //보낸쪽지 리스트
 		
-		model.addAttribute("list", list);
+		List<Message> reclist = msgs.reclist(message); //받은쪽지 리스트
+		
+		
+		model.addAttribute("sendlist", sendlist);
+		model.addAttribute("reclist", reclist);
 		
 		return "myPageTab/myMsgs";
 	}

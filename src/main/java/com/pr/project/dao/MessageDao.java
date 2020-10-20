@@ -8,6 +8,8 @@ public interface MessageDao {
 
 	int insert(Message message);
 
-	List<Message> list(Message message);
+	List<Message> sendlist(Message message);
+
+	List<Message> reclist(Message message);
 
 }

@@ -27,13 +27,13 @@
 			<!-- <td width=80 style="border-right:1px solid #8C8C8C"> &nbsp; 2020-10-20 </td> -->
 		<!-- </tr> -->
 		
-		<c:if test="${empty list }">
+		<c:if test="${empty sendlist }">
 			<tr style=" border-bottom:1px solid #8C8C8C">
-				<td colspan="4" > 보낸 쪽지가 없습니다. </td>
+				<td colspan="4" style="padding-top:10px;padding-bottom:10px;padding-left:5px;border-right:1px solid #8C8C8C"> 보낸 쪽지가 없습니다. </td>
 		</c:if>
 		
-		<c:if test="${not empty list }">
-			<c:forEach var="message" items="${list }">
+		<c:if test="${not empty sendlist }">
+			<c:forEach var="message" items="${sendlist }">
 				<tr style=" border-bottom:1px solid #8C8C8C">
 					<td width=25 style="padding-top:10px;padding-bottom:10px;padding-left:5px;border-right:1px solid #8C8C8C"> <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> </td>
 					<td width=80 style="border-right:1px solid #8C8C8C"> &nbsp; ${message.m_receiver_nick }</td>

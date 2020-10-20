@@ -14,7 +14,7 @@
 <c:if test="${result>0 }">
 <script type="text/javascript"> 
 alert("쪽지 보내기 완료~!");
-location.href="myPageTab/sendmessagePopup.html";
+location.href="sendmessagePopup.html";
 
 //location.href="empSelect.html?empno=${emp.empno}";
 </script>
