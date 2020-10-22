@@ -41,4 +41,18 @@ public class MessageDaoImpl implements MessageDao{
 		
 		return sst.selectOne("messagens.getTotal_r",message);
 	}
+
+	public int delete(int m_num) {
+		
+		return sst.delete("messagens.delete", m_num);
+	}
+
+
+	public int delete2(int m_num) {
+		
+		return sst.delete("messagens.delete2",m_num);
+	}
+
+
+	
 }

@@ -16,4 +16,10 @@ public interface MessageDao {
 
 	int getTotal_r(Message message);
 
+	int delete(int m_num);
+
+	int delete2(int m_num);
+
+	
+
 }

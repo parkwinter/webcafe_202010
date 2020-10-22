@@ -42,4 +42,19 @@ public class MessageServiceImpl implements MessageService{
 		
 		return msgd.getTotal_r(message);
 	}
+
+
+	public int delete(int m_num) {
+		
+		return msgd.delete(m_num);
+	}
+
+
+	public int delete2(int m_num) {
+		
+		return msgd.delete2(m_num);
+	}
+
+
+	
 }

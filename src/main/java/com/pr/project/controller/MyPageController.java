@@ -167,6 +167,9 @@ public class MyPageController {
 		
 		model.addAttribute("pbm", pbm); //보낸쪽지
 		
+		//System.out.println("starRow= "+startRow);
+		//System.out.println("endRow="+endRow);
+		
 		return "myPageTab/my_receivedMail";
 	}
 	
@@ -203,5 +206,19 @@ public class MyPageController {
 	}
 	
 
+	// 보낸메일삭제
+	@RequestMapping("/rDelete")
+	public String rDelete (Message message) {
+		System.out.println("delete 불러옴");
+		msgs.delete(message.getM_num());
+		return "redirect:/myPageTab/sendMail";
+	}
 	
+	//받은메일삭제
+	@RequestMapping("/rDelete2")
+	public String rDelete2 (Message message) {
+		System.out.println("delete 불러옴");
+		msgs.delete2(message.getM_num());
+		return "redirect:/myPageTab/my_receivedMail";
+	}
 }

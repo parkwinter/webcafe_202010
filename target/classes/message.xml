@@ -41,15 +41,22 @@
 	</select>
 	
 	<select id="getTotal" parameterType="message"  resultType="integer">
-	select count(*) from message where m_sender_nick = '유댕ㅎㅎ' 
+		select count(*) from message where m_sender_nick = '유댕ㅎㅎ' 
 		
 	</select>
 	
 	<select id="getTotal_r" parameterType="message"  resultType="integer">
-	select count(*) from message where m_receiver_nick = '쁘띠길동' 
+		select count(*) from message where m_receiver_nick = '쁘띠길동' 
 		
 	</select>
 	
+	<update id="delete" parameterType="integer">
+		update message set m_sender_del='y' where m_num=#{m_num}
+	</update>
+
+	<update id="delete2" parameterType="integer">
+		update message set m_receiver_del='y' where m_num=#{m_num}
+	</update>
 </mapper>
 
 

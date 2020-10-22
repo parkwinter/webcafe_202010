@@ -10,6 +10,36 @@
 
 <title>쪽지함</title>
 
+<script type="text/javascript">
+
+function check(box){
+	
+	if(box.checked == true){
+		var number = box.value;
+		alert(box.value + "체크됨" + number);
+		
+		 return number;
+	}
+	
+}
+function del(){
+ 	for(var i = 0; i < parseInt("${fn:length(reclist)}"); i++) {
+		if ($("#inlineCheckbox1_"+i).is(":checked") == true) {
+			var sendData = 'm_num=' + $("#inlineCheckbox1_"+i).val();
+			alert(sendData);
+			$.post('/rDelete2.html', sendData, function(data) {
+				
+			//location.reload();
+			});
+		}
+	} 
+	alert("삭제 되었습니다");
+ 	location.reload();
+}
+
+
+</script>
+
 </head>
 <body>
 <div >
@@ -33,7 +63,7 @@
 			<td align="right"> 
 				<div align="right">
 				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-				<a href="" class="btn btn-default btn-sm">삭제</a>
+				<button class="btn btn-default btn-sm" onclick="del()">삭제</button>
 				</div>
 			</td>		
 		</tr>
@@ -64,13 +94,16 @@
 		</c:if>
 		
 		<c:if test="${not empty reclist }">
-			<c:forEach var="message" items="${reclist }">
+			<c:forEach var="message" items="${reclist }" varStatus="i">
+			<c:if test="${message.m_receiver_del != 'y' }">
 				<tr style=" border-bottom:1px solid #8C8C8C">
-					<td width=25 style="padding-top:10px;padding-bottom:10px;padding-left:5px;border-right:1px solid #8C8C8C"> <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> </td>
+					<td width=25 style="padding-top:10px;padding-bottom:10px;padding-left:5px;border-right:1px solid #8C8C8C"> 
+					<input class="form-check-input" type="checkbox"  id="inlineCheckbox1_${i.index}" value="${message.m_num }" onClick="check(this)"> </td>
 					<td width=80 style="border-right:1px solid #8C8C8C"> &nbsp; ${message.m_sender_nick }</td>
 					<td width=285 style="border-right:1px solid #8C8C8C">&nbsp;  ${message.m_content }</td>
 					<td width=80 style="border-right:1px solid #8C8C8C"> &nbsp; ${message.m_send_date } </td>
 				</tr>
+				</c:if>
 			</c:forEach>
 		</c:if>
 	</table>

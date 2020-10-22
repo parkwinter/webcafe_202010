@@ -8,14 +8,21 @@
 <meta charset="UTF-8">
 
 <title>회원 정보 수정 결과</title>
+
+
 </head>
 <body>
 <c:if test="${result>0 }">
 <script type="text/javascript"> 
 alert("정보 수정 완료~!" );
-location.href="userInfoUpdateForm.html";
+//location.href="userInfoUpdateForm.html";
+//location.href="../home_yj.html";
 
-//location.href="empSelect.html?empno=${emp.empno}";
+
+/* 자식창 닫으면서 부모창 새로고침 */
+opener.parent.location.reload();
+window.close();
+
 </script>
 </c:if>
 
